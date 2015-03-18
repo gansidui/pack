@@ -71,3 +71,26 @@ func TestPack(t *testing.T) {
 		t.Fatal()
 	}
 }
+
+func TestConvert(t *testing.T) {
+	var a uint16 = 65535
+	var b uint32 = 12345678
+	var c uint64 = 12345678901234567890
+
+	var buf []byte
+
+	buf = Uint16ToBytes(a)
+	if BytesToUint16(buf) != a {
+		t.Fatal()
+	}
+
+	buf = Uint32ToBytes(b)
+	if BytesToUint32(buf) != b {
+		t.Fatal()
+	}
+
+	buf = Uint64ToBytes(c)
+	if BytesToUint64(buf) != c {
+		t.Fatal()
+	}
+}
